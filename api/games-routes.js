@@ -60,3 +60,5 @@ router.delete('/:id', isValidID, (req, res) => {
     });
   });
 });
+
+module.exports = router;

@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     table.float('rating');
     table.text('url');
     table.text('platforms').notNullable();
-    table.integer('genre_id');
+    table.integer('genre_id')//.unsigned().index().references('genres.id')
  });
 };
 
