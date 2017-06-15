@@ -5,16 +5,20 @@ const router = express.Router();
 const queries = require('../db/queries');
 
 function isValidID(req, res, next) {
-  if(!isNaN(req.params.id)) return next();
-  next(new Error('Invalid ID'));
+  if(!isNaN(req.params.id)) {
+    return next();
+  } else {
+    next(new Error('Invalid ID'));
+  }
 };
 
 function validGame(game) {
   const hasTitle = typeof game.title == 'string' && game.title.trim() != '';
   const hasURL = typeof game.url == 'string' && game.url.trim() != '';
   const hasDescription = typeof game.description == 'string' && game.description.trim() != '';
-  const hasRating = !isNaN(game.rating);
-  return hasTitle && hasURL && hasDescription && hasRating;
+  const hasRating = !isNaN(game.rating) != null;
+  const hasPlatform = typeof game.platform == 'string' && game.platform.trim() != '';
+  return hasTitle && hasURL && hasDescription && hasRating && hasPlatform;
 };
 
 router.get('/', (req, res) => {
