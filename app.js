@@ -13,6 +13,11 @@ app.use(function(err, req, res, next) {
     error: req.app.get('env') === 'development' ? err : {}
   });
 });
-app.listen(process.env.PORT || 3001);
+
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => {
+  console.log(`Listening on Port ${port}`);
+});
 
 module.exports = app;
