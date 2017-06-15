@@ -1,22 +1,22 @@
 exports.seed = function(knex, Promise) {
-  return knex('games').del()
-    .then(function () {
-      return knex('games').insert([
-        {id: 1, title: "Assassin's Creed",
+  return knex.raw('TRUNCATE games RESTART IDENTITY CASCADE;')
+  .then(function () {
+    return knex('games').insert([
+      {
+        title: "Assassin's Creed",
         description: 'An arrogant young assassin is stripped of his rank and must work his way back up',
         rating: 8,
         url: 'http://www.imdb.com/title/tt0932936/?ref_=fn_al_tt_6',
         platforms: 'Original Xbox'
       },
       {
-        id: 2, title: "Assassin's Creed II",
+        title: "Assassin's Creed II",
         description: 'A young assassin in Renaissance Italy embarks on a quest for revenge',
         rating: 9,
         url: 'http://www.imdb.com/title/tt1201133/?ref_=fn_al_tt_4',
         platforms: 'Xbox 360, PC, PS3'
       },
       {
-        id: 3,
         title: "Assassin's Creed: Brotherhood",
         description: 'The Italian Assassin, now fully trained, begins to follow the Assassin doctrine while also completing his revenge quest',
         rating: 9,
@@ -93,6 +93,6 @@ exports.seed = function(knex, Promise) {
         url: 'http://www.imdb.com/title/tt4876864/?ref_=fn_al_tt_4',
         platforms: 'Xbox One, PC, PS4'
       }
-      ]);
-    });
+    ]);
+  });
 };

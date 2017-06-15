@@ -1,5 +1,5 @@
 exports.seed = function(knex, Promise) {
-  return knex('genres').del()
+  return knex.raw('TRUNCATE genres RESTART IDENTITY CASCADE;')
   .then(function () {
       return knex('genres').insert([
         {

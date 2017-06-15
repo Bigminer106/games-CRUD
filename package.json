@@ -1,10 +1,8 @@
 {
   "name": "games",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "directories": {
-    "test": "tests"
+  "engines": {
+    "node": "7.9.0"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -20,7 +18,8 @@
     "mocha": "^3.4.2"
   },
   "scripts": {
-    "test": "mocha"
+    "start": "node app.js",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
